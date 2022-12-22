@@ -39,6 +39,24 @@ void tail(node* &head, int val)
 	temp->next = n;
 }
 
+void tail(node* &head, int val)
+{
+	node* n = new node(val);
+	
+	if(head == NULL)
+	{
+		head=n;
+		return;
+	}
+	
+	node* temp = head;
+	while(temp->next!=NULL)
+	{
+		temp = temp->next;
+	}
+	temp->next = n;
+}
+
 void display(node* &head)
 {
 	cout<<"\nLinked List"<<endl;
@@ -60,5 +78,8 @@ int main()
 	tail(head,67);
 	tail(head,34);
 	tail(head,12);
+	display(head);
+	index(head,2,69);
+	index(head,4,70);
 	display(head);
 }
