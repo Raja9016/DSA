@@ -14,22 +14,22 @@ class node
 	}
 };
 
-void insertion(node* &head,int val)
+void Head(node* &head,int val)
 {
 	node* temp = new node(val);
 	temp->next = head;
 	head = temp;
 }
 
-void insertAtPosition(Node* &tail, Node* & head, int position, int d)
+void insertAtPosition(node* & head, int position, int d)
 {
     if(position == 1) 
     {
-        insertAtHead(head, d);
+        Head(head, d);
         return;
     }
 
-    Node* temp  = head;
+    node* temp  = head;
     int cnt = 1;
 
     while(cnt < position-1) 
@@ -38,13 +38,7 @@ void insertAtPosition(Node* &tail, Node* & head, int position, int d)
         cnt++;
     }
 
-    if(temp -> next == NULL) 
-    {
-        insertAtTail(tail,d);
-        return ;
-    }
-
-    Node* nodeToInsert = new Node(d);
+    node* nodeToInsert = new node(d);
 
     nodeToInsert -> next = temp -> next;
     temp -> next = nodeToInsert;
@@ -82,15 +76,16 @@ void display(node* &head)
 int main()
 {
 	node* head = new node(94);
-	insertion(head,89);
-	insertion(head,56);
-	insertion(head,23);
+	Head(head,89);
+	Head(head,56);
+	Head(head,23);
 	display(head);
 	tail(head,67);
 	tail(head,34);
 	tail(head,12);
 	display(head);
-	index(head,2,69);
-	index(head,4,70);
+	insertAtPosition(head,2,11);
+	insertAtPosition(head,3,22);
 	display(head);
 }
+
