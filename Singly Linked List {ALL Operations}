@@ -1,0 +1,105 @@
+#include<iostream>
+using namespace std;
+
+class node
+{
+    public:
+    int data;
+    node* next;
+
+    node(int val)
+    {
+        this->data = val;
+        this->next = NULL;
+    }
+};
+
+//Inertion in Linked list
+void insertion(node* &head,int val)
+{
+    node* temp = new node(val);
+    temp->next = head;
+    head = temp;
+}
+
+void index(node* &head, int pos, int val)
+{
+    node* temp = new node(val);
+    node* n = head;
+    int count = 1;
+    while(count<(pos-1))
+    {
+        n = n->next;
+    }   
+    temp->next = n->next;
+    n->next = temp;
+}
+
+void tail(node* &head, int val)
+{
+    node* n = head;
+    node* temp = new node(val);
+    while (n->next!=NULL)
+    {
+        n = n->next;
+    }
+    n->next = temp;
+}
+//Insertion End
+
+
+// Deleteion of Linked lIst
+void deletenode(node* &head,int pos)
+{
+    
+    if(pos==1)
+    {
+        node* temp = head;
+        head = head->next;
+        temp->next = NULL;
+        delete temp;
+    }
+    else
+    {
+        node* temp = head;
+        node* n = NULL;
+        int curr = 1;
+        while(curr<pos)
+        {
+            n = temp ; 
+            temp = temp->next;
+            curr++;
+        }
+        n->next = temp->next;
+        temp->next = NULL;
+        delete temp;
+    }
+}
+
+//Deletion End
+
+//Display Linked list
+void display(node* &head)
+{
+    node* temp = head;
+    cout<<"\nLinked List: \n";
+    while(temp!=NULL)
+    {
+        cout<<"Element: "<<temp->data<<endl;
+        temp = temp->next;
+    }
+}
+
+int main()
+{
+    node* head = new node(45);
+    insertion(head,67);
+    insertion(head,23);
+    tail(head,34);
+    tail(head,100);
+    index(head,2,78);
+    display(head);
+    deletenode(head,1);
+    display(head);
+}
+
